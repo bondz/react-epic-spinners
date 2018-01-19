@@ -1,0 +1,43 @@
+{
+  "ignore": ["node_modules/**"],
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ],
+        "react",
+        "stage-1"
+      ],
+      "plugins": [
+        "transform-object-rest-spread",
+        "transform-react-remove-prop-types"
+      ]
+    },
+    "development": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "browsers": ["last 5 versions", "safari >= 7"]
+            },
+            "modules": false
+          }
+        ],
+        "react",
+        "stage-1"
+      ],
+      "plugins": [
+        "transform-object-rest-spread",
+        "external-helpers",
+        "transform-react-remove-prop-types"
+      ]
+    }
+  }
+}
