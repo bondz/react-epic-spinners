@@ -12,7 +12,7 @@
   "typings": "./typings/index.d.ts",
   "license": "MIT",
   "keywords": ["react", "epic spinners"],
-  "sideEffects": false,
+  "side-effects": false,
   "dependencies": {
     "react": ">=0.14.x",
     "styled-components": "^2.4.0"
