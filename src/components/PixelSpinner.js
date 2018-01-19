@@ -3,22 +3,20 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Pixels = styled.div`
-  .pixel-spinner,
-  .pixel-spinner * {
+  height: ${props => props.size}px;
+  width: ${props => props.size}px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  * {
     box-sizing: border-box;
   }
-  .pixel-spinner {
-    height: ${props => props.size};
-    width: ${props => props.size};
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
 
-  .pixel-spinner .pixel-spinner-inner {
-    width: ${props => props.pixelSize};
-    height: ${props => props.pixelSize};
+  .pixel-spinner-inner {
+    width: ${props => props.pixelSize}px;
+    height: ${props => props.pixelSize}px;
     background-color: ${props => props.color};
     color: ${props => props.color};
 
