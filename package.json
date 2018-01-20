@@ -1,6 +1,6 @@
 {
   "name": "react-epic-spinners",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "dist/react-epic-spinners.cjs.js",
   "module": "dist/react-epic-spinners.esm.js",
   "browser": "dist/react-epic-spinners.umd.js",
@@ -11,7 +11,10 @@
   "author": "Akinmade Bond <bond@max.ng>",
   "typings": "./typings/index.d.ts",
   "license": "MIT",
-  "keywords": ["react", "epic spinners"],
+  "keywords": [
+    "react",
+    "epic spinners"
+  ],
   "side-effects": false,
   "dependencies": {
     "react": ">=0.14.x",
@@ -43,8 +46,12 @@
     "test": "jest",
     "prepublish": "yarn build"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "jest": {
-    "setupFiles": ["raf/polyfill"]
+    "setupFiles": [
+      "raf/polyfill"
+    ]
   }
 }
