@@ -1,6 +1,6 @@
 {
   "name": "react-epic-spinners",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "dist/react-epic-spinners.cjs.js",
   "module": "dist/react-epic-spinners.esm.js",
   "browser": "dist/react-epic-spinners.umd.js",
@@ -13,9 +13,10 @@
   "license": "MIT",
   "keywords": [
     "react",
-    "epic spinners"
+    "epic spinners",
+    "spinners"
   ],
-  "side-effects": false,
+  "sideEffects": false,
   "dependencies": {
     "react": ">=0.14.x",
     "styled-components": "^2.4.0"
