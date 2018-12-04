@@ -2,10 +2,10 @@ import { StatelessComponent } from 'react';
 
 interface EpicProps {
   size: number;
-  animationDuration: number;
-  color: string;
-  className: string;
-  style: object;
+  animationDuration?: number;
+  color?: string;
+  className?: string;
+  style?: object;
 }
 
 declare const AtomSpinner: StatelessComponent<EpicProps>;
