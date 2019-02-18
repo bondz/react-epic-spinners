@@ -14,8 +14,8 @@
 
 This library is the React implementation of Vue [epic-spinners](http://epic-spinners.epicmax.co/) by [EpicMax](https://github.com/epicmaxco/epic-spinners)
 
-[Epic Spinenrs with Bit](https://bitsrc.io/bondz/react-epic-spinners) - Disocver, play and install spinners.
-
+[Epic Spinners with Bit](https://bitsrc.io/bondz/react-epic-spinners) - Disocver, play and install spinners.
+![scope perview](https://storage.googleapis.com/bit-assets/epic_spinners.png)
 ## Installation
 
 Using NPM
