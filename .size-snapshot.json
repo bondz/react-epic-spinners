@@ -1,0 +1,26 @@
+{
+  "dist/react-epic-spinners.esm.js": {
+    "bundled": 77206,
+    "minified": 61425,
+    "gzipped": 6206,
+    "treeshaked": {
+      "rollup": {
+        "code": 43336,
+        "import_statements": 249
+      },
+      "webpack": {
+        "code": 56343
+      }
+    }
+  },
+  "dist/react-epic-spinners.umd.js": {
+    "bundled": 82669,
+    "minified": 55821,
+    "gzipped": 6322
+  },
+  "dist/react-epic-spinners.umd.min.js": {
+    "bundled": 82669,
+    "minified": 55821,
+    "gzipped": 6322
+  }
+}
