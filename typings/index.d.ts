@@ -1,7 +1,7 @@
 import { StatelessComponent } from 'react';
 
 interface EpicProps {
-  size: number;
+  size?: number;
   animationDuration?: number;
   color?: string;
   className?: string;
