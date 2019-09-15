@@ -50,7 +50,8 @@
   },
   "files": [
     "dist",
-    "typings/index.d.ts"
+    "typings/index.d.ts",
+    "index.js"
   ],
   "jest": {
     "setupFiles": [
