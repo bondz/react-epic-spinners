@@ -19,7 +19,7 @@
   "sideEffects": false,
   "dependencies": {
     "react": ">=0.14.x",
-    "styled-components": "^2.4.0"
+    "styled-components": ">=2.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
