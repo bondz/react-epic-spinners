@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Radar = styled.div`
-  height: ${props => props.size}px;
-  width: ${props => props.size}px;
+  height: ${(props) => props.size}px;
+  width: ${(props) => props.size}px;
   position: relative;
 
   * {
@@ -17,23 +17,23 @@ const Radar = styled.div`
     width: 100%;
     top: 0;
     left: 0;
-    animation: radar-spinner-animation ${props => props.animationDuration}ms
+    animation: radar-spinner-animation ${(props) => props.animationDuration}ms
       infinite;
   }
   .circle:nth-child(1) {
-    padding: ${props => props.borderWidth * 2 * 0}px;
-    animation-delay: ${props => props.animationDuration * 0.15}ms;
+    padding: ${(props) => props.borderWidth * 2 * 0}px;
+    animation-delay: ${(props) => props.animationDuration * 0.15}ms;
   }
   .circle:nth-child(2) {
-    padding: ${props => props.borderWidth * 2 * 1}px;
-    animation-delay: ${props => props.animationDuration * 0.15}ms;
+    padding: ${(props) => props.borderWidth * 2 * 1}px;
+    animation-delay: ${(props) => props.animationDuration * 0.15}ms;
   }
   .circle:nth-child(3) {
-    padding: ${props => props.borderWidth * 2 * 2}px;
-    animation-delay: ${props => props.animationDuration * 0.15}ms;
+    padding: ${(props) => props.borderWidth * 2 * 2}px;
+    animation-delay: ${(props) => props.animationDuration * 0.15}ms;
   }
   .circle:nth-child(4) {
-    padding: ${props => props.borderWidth * 2 * 3}px;
+    padding: ${(props) => props.borderWidth * 2 * 3}px;
     animation-delay: 0ms;
   }
   .circle-inner,
@@ -41,11 +41,11 @@ const Radar = styled.div`
     height: 100%;
     width: 100%;
     border-radius: 50%;
-    border: ${props => props.borderWidth}px solid transparent;
+    border: ${(props) => props.borderWidth}px solid transparent;
   }
   .circle-inner {
-    border-left-color: ${props => props.color};
-    border-right-color: ${props => props.color};
+    border-left-color: ${(props) => props.color};
+    border-right-color: ${(props) => props.color};
   }
   @keyframes radar-spinner-animation {
     50% {
@@ -65,13 +65,6 @@ const propTypes = {
   style: PropTypes.object,
 };
 
-const defaultProps = {
-  size: 110,
-  color: '#fff',
-  animationDuration: 2000,
-  className: '',
-};
-
 function generateSpinners(num) {
   return Array.from({ length: num }).map((val, index) => (
     <div key={index} className="circle">
@@ -83,14 +76,14 @@ function generateSpinners(num) {
 }
 
 const RadarSpinner = ({
-  size,
-  color,
-  animationDuration,
-  className,
+  size = 110,
+  color = '#fff',
+  animationDuration = 2000,
+  className = '',
   style,
   ...props
 }) => {
-  const borderWidth = size * 5 / 110;
+  const borderWidth = (size * 5) / 110;
 
   return (
     <Radar
@@ -108,6 +101,5 @@ const RadarSpinner = ({
 };
 
 RadarSpinner.propTypes = propTypes;
-RadarSpinner.defaultProps = defaultProps;
 
 export default RadarSpinner;

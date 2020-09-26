@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const LoadingRhombus = styled.div`
-  width: ${props => props.size * 4}px;
-  height: ${props => props.size}px;
+  width: ${(props) => props.size * 4}px;
+  height: ${(props) => props.size}px;
   position: relative;
 
   * {
@@ -12,25 +12,25 @@ const LoadingRhombus = styled.div`
   }
 
   .rhombus {
-    height: ${props => props.size}px;
-    width: ${props => props.size}px;
-    background-color: ${props => props.color};
-    left: ${props => props.size * 4}px;
+    height: ${(props) => props.size}px;
+    width: ${(props) => props.size}px;
+    background-color: ${(props) => props.color};
+    left: ${(props) => props.size * 4}px;
     position: absolute;
     margin: 0 auto;
     border-radius: 2px;
     transform: translateY(0) rotate(45deg) scale(0);
     animation: looping-rhombuses-spinner-animation
-      ${props => props.animationDuration}ms linear infinite;
+      ${(props) => props.animationDuration}ms linear infinite;
   }
   .rhombus:nth-child(1) {
-    animation-delay: calc(${props => props.animationDuration}ms * 1 / -1.5);
+    animation-delay: calc(${(props) => props.animationDuration}ms * 1 / -1.5);
   }
   .rhombus:nth-child(2) {
-    animation-delay: calc(${props => props.animationDuration}ms * 2 / -1.5);
+    animation-delay: calc(${(props) => props.animationDuration}ms * 2 / -1.5);
   }
   .rhombus:nth-child(3) {
-    animation-delay: calc(${props => props.animationDuration}ms * 3 / -1.5);
+    animation-delay: calc(${(props) => props.animationDuration}ms * 3 / -1.5);
   }
   @keyframes looping-rhombuses-spinner-animation {
     0% {
@@ -53,13 +53,6 @@ const propTypes = {
   style: PropTypes.object,
 };
 
-const defaultProps = {
-  size: 15,
-  color: '#fff',
-  animationDuration: 2500,
-  className: '',
-};
-
 function generateSpinners(num) {
   return Array.from({ length: num }).map((val, index) => (
     <div key={index} className="rhombus" />
@@ -67,10 +60,10 @@ function generateSpinners(num) {
 }
 
 const LoopingRhombusesSpinner = ({
-  size,
-  color,
-  animationDuration,
-  className,
+  size = 15,
+  color = '#fff',
+  animationDuration = 2500,
+  className = '',
   style,
   ...props
 }) => {
@@ -91,6 +84,5 @@ const LoopingRhombusesSpinner = ({
 };
 
 LoopingRhombusesSpinner.propTypes = propTypes;
-LoopingRhombusesSpinner.defaultProps = defaultProps;
 
 export default LoopingRhombusesSpinner;

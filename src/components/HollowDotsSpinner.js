@@ -3,32 +3,32 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const HollowSpinner = styled.div`
-  height: ${props => props.size}px;
-  width: ${props => 2 * props.size * props.dotsNum}px;
+  height: ${(props) => props.size}px;
+  width: ${(props) => 2 * props.size * props.dotsNum}px;
 
   * {
     box-sizing: border-box;
   }
 
   .dot {
-    width: ${props => props.size}px;
-    height: ${props => props.size}px;
-    margin: 0 calc(${props => props.size}px / 2);
-    border: calc(${props => props.size}px / 5) solid ${props => props.color};
+    width: ${(props) => props.size}px;
+    height: ${(props) => props.size}px;
+    margin: 0 calc(${(props) => props.size}px / 2);
+    border: calc(${(props) => props.size}px / 5) solid ${(props) => props.color};
     border-radius: 50%;
     float: left;
     transform: scale(0);
     animation: hollow-dots-spinner-animation
-      ${props => props.animationDuration}ms ease infinite 0ms;
+      ${(props) => props.animationDuration}ms ease infinite 0ms;
   }
   .dot:nth-child(1) {
-    animation-delay: calc(${props => props.animationDelay}ms * 1);
+    animation-delay: calc(${(props) => props.animationDelay}ms * 1);
   }
   .dot:nth-child(2) {
-    animation-delay: calc(${props => props.animationDelay}ms * 2);
+    animation-delay: calc(${(props) => props.animationDelay}ms * 2);
   }
   .dot:nth-child(3) {
-    animation-delay: calc(${props => props.animationDelay}ms * 3);
+    animation-delay: calc(${(props) => props.animationDelay}ms * 3);
   }
   @keyframes hollow-dots-spinner-animation {
     50% {
@@ -49,13 +49,6 @@ const propTypes = {
   style: PropTypes.object,
 };
 
-const defaultProps = {
-  size: 15,
-  color: '#fff',
-  animationDuration: 1000,
-  className: '',
-};
-
 function generateDots(num) {
   return Array.from({ length: num }).map((val, index) => (
     <div key={index} className="dot" />
@@ -63,10 +56,10 @@ function generateDots(num) {
 }
 
 const HollowDotsSpinner = ({
-  size,
-  color,
-  animationDuration,
-  className,
+  size = 15,
+  color = '#fff',
+  animationDuration = 1000,
+  className = '',
   style,
   ...props
 }) => {
@@ -90,6 +83,5 @@ const HollowDotsSpinner = ({
 };
 
 HollowDotsSpinner.propTypes = propTypes;
-HollowDotsSpinner.defaultProps = defaultProps;
 
 export default HollowDotsSpinner;

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const SquareSpinner = styled.div`
-  height: ${props => props.size}px;
-  width: ${props => props.size}px;
+  height: ${(props) => props.size}px;
+  width: ${(props) => props.size}px;
   position: relative;
-  border: 4px solid ${props => props.color};
+  border: 4px solid ${(props) => props.color};
   animation: fulfilling-square-spinner-animation
-    ${props => props.animationDuration}ms infinite ease;
+    ${(props) => props.animationDuration}ms infinite ease;
 
   * {
     box-sizing: border-box;
@@ -17,11 +17,11 @@ const SquareSpinner = styled.div`
   .spinner-inner {
     vertical-align: top;
     display: inline-block;
-    background-color: ${props => props.color};
+    background-color: ${(props) => props.color};
     width: 100%;
     opacity: 1;
     animation: fulfilling-square-spinner-inner-animation
-      ${props => props.animationDuration}ms infinite ease-in;
+      ${(props) => props.animationDuration}ms infinite ease-in;
   }
 
   @keyframes fulfilling-square-spinner-animation {
@@ -69,18 +69,11 @@ const propTypes = {
   style: PropTypes.object,
 };
 
-const defaultProps = {
-  size: 50,
-  color: '#fff',
-  animationDuration: 4000,
-  className: '',
-};
-
 const FulfillingSquareSpinner = ({
-  size,
-  color,
-  animationDuration,
-  className,
+  size = 50,
+  color = '#fff',
+  animationDuration = 4000,
+  className = '',
   style,
   ...props
 }) => (
@@ -97,6 +90,5 @@ const FulfillingSquareSpinner = ({
 );
 
 FulfillingSquareSpinner.propTypes = propTypes;
-FulfillingSquareSpinner.defaultProps = defaultProps;
 
 export default FulfillingSquareSpinner;
