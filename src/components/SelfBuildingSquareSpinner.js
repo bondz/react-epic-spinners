@@ -3,53 +3,53 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const BuildingSquare = styled.div`
-  height: ${props => props.size}px;
-  width: ${props => props.size}px;
-  top: ${props => -1 * props.initialTopPosition}px;
+  height: ${(props) => props.size}px;
+  width: ${(props) => props.size}px;
+  top: ${(props) => -1 * props.initialTopPosition}px;
 
   * {
     box-sizing: border-box;
   }
 
   .square {
-    height: ${props => props.size / 4}px;
-    width: ${props => props.size / 4}px;
-    top: ${props => -1 * props.initialTopPosition}px;
-    margin-right: calc(${props => props.size / 4}px / 3);
-    margin-top: calc(${props => props.size / 4}px / 3);
-    background: ${props => props.color};
+    height: ${(props) => props.size / 4}px;
+    width: ${(props) => props.size / 4}px;
+    top: ${(props) => -1 * props.initialTopPosition}px;
+    margin-right: calc(${(props) => props.size / 4}px / 3);
+    margin-top: calc(${(props) => props.size / 4}px / 3);
+    background: ${(props) => props.color};
     float: left;
     position: relative;
     opacity: 0;
     animation: self-building-square-spinner
-      ${props => props.animationDuration}ms infinite;
+      ${(props) => props.animationDuration}ms infinite;
   }
   .square:nth-child(1) {
-    animation-delay: calc(${props => props.animationDuration * 0.05}ms * 6);
+    animation-delay: calc(${(props) => props.animationDuration * 0.05}ms * 6);
   }
   .square:nth-child(2) {
-    animation-delay: calc(${props => props.animationDuration * 0.05}ms * 7);
+    animation-delay: calc(${(props) => props.animationDuration * 0.05}ms * 7);
   }
   .square:nth-child(3) {
-    animation-delay: calc(${props => props.animationDuration * 0.05}ms * 8);
+    animation-delay: calc(${(props) => props.animationDuration * 0.05}ms * 8);
   }
   .square:nth-child(4) {
-    animation-delay: calc(${props => props.animationDuration * 0.05}ms * 3);
+    animation-delay: calc(${(props) => props.animationDuration * 0.05}ms * 3);
   }
   .square:nth-child(5) {
-    animation-delay: calc(${props => props.animationDuration * 0.05}ms * 4);
+    animation-delay: calc(${(props) => props.animationDuration * 0.05}ms * 4);
   }
   .square:nth-child(6) {
-    animation-delay: calc(${props => props.animationDuration * 0.05}ms * 5);
+    animation-delay: calc(${(props) => props.animationDuration * 0.05}ms * 5);
   }
   .square:nth-child(7) {
-    animation-delay: calc(${props => props.animationDuration * 0.05}ms * 0);
+    animation-delay: calc(${(props) => props.animationDuration * 0.05}ms * 0);
   }
   .square:nth-child(8) {
-    animation-delay: calc(${props => props.animationDuration * 0.05}ms * 1);
+    animation-delay: calc(${(props) => props.animationDuration * 0.05}ms * 1);
   }
   .square:nth-child(9) {
-    animation-delay: calc(${props => props.animationDuration * 0.05}ms * 2);
+    animation-delay: calc(${(props) => props.animationDuration * 0.05}ms * 2);
   }
   .clear {
     clear: both;
@@ -81,13 +81,6 @@ const propTypes = {
   style: PropTypes.object,
 };
 
-const defaultProps = {
-  size: 40,
-  color: '#fff',
-  animationDuration: 6000,
-  className: '',
-};
-
 function generateSpinners(num) {
   return Array.from({ length: num }).map((val, index) => (
     <div key={index} className={`square${index % 3 === 0 ? ' clear' : ''}`} />
@@ -95,10 +88,10 @@ function generateSpinners(num) {
 }
 
 const SelfBuildingSquareSpinner = ({
-  size,
-  color,
-  animationDuration,
-  className,
+  size = 40,
+  color = '#fff',
+  animationDuration = 6000,
+  className = '',
   style,
   ...props
 }) => {
@@ -122,6 +115,5 @@ const SelfBuildingSquareSpinner = ({
 };
 
 SelfBuildingSquareSpinner.propTypes = propTypes;
-SelfBuildingSquareSpinner.defaultProps = defaultProps;
 
 export default SelfBuildingSquareSpinner;

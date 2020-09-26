@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const BreedingSpinner = styled.div`
-  height: ${props => props.size}px;
-  width: ${props => props.size}px;
+  height: ${(props) => props.size}px;
+  width: ${(props) => props.size}px;
   position: relative;
   transform: rotate(45deg);
 
@@ -13,12 +13,12 @@ const BreedingSpinner = styled.div`
   }
 
   .rhombus {
-    height: calc(${props => props.size}px / 7.5);
-    width: calc(${props => props.size}px / 7.5);
-    animation-duration: ${props => props.animationDuration}ms;
-    top: calc(${props => props.size}px / 2.3077);
-    left: calc(${props => props.size}px / 2.3077);
-    background-color: ${props => props.color};
+    height: calc(${(props) => props.size}px / 7.5);
+    width: calc(${(props) => props.size}px / 7.5);
+    animation-duration: ${(props) => props.animationDuration}ms;
+    top: calc(${(props) => props.size}px / 2.3077);
+    left: calc(${(props) => props.size}px / 2.3077);
+    background-color: ${(props) => props.color};
     position: absolute;
     animation-iteration-count: infinite;
   }
@@ -29,53 +29,53 @@ const BreedingSpinner = styled.div`
 
   .rhombus.child-1 {
     animation-name: breeding-rhombus-spinner-animation-child-1;
-    animation-delay: calc(${props => props.delayModifier}ms * 1);
+    animation-delay: calc(${(props) => props.delayModifier}ms * 1);
   }
 
   .rhombus.child-2 {
     animation-name: breeding-rhombus-spinner-animation-child-2;
-    animation-delay: calc(${props => props.delayModifier}ms * 2);
+    animation-delay: calc(${(props) => props.delayModifier}ms * 2);
   }
 
   .rhombus.child-3 {
     animation-name: breeding-rhombus-spinner-animation-child-3;
-    animation-delay: calc(${props => props.delayModifier}ms * 3);
+    animation-delay: calc(${(props) => props.delayModifier}ms * 3);
   }
 
   .rhombus.child-4 {
     animation-name: breeding-rhombus-spinner-animation-child-4;
-    animation-delay: calc(${props => props.delayModifier}ms * 4);
+    animation-delay: calc(${(props) => props.delayModifier}ms * 4);
   }
 
   .rhombus.child-5 {
     animation-name: breeding-rhombus-spinner-animation-child-5;
-    animation-delay: calc(${props => props.delayModifier}ms * 5);
+    animation-delay: calc(${(props) => props.delayModifier}ms * 5);
   }
 
   .rhombus.child-6 {
     animation-name: breeding-rhombus-spinner-animation-child-6;
-    animation-delay: calc(${props => props.delayModifier}ms * 6);
+    animation-delay: calc(${(props) => props.delayModifier}ms * 6);
   }
 
   .rhombus.child-7 {
     animation-name: breeding-rhombus-spinner-animation-child-7;
-    animation-delay: calc(${props => props.delayModifier}ms * 7);
+    animation-delay: calc(${(props) => props.delayModifier}ms * 7);
   }
 
   .rhombus.child-8 {
     animation-name: breeding-rhombus-spinner-animation-child-8;
-    animation-delay: calc(${props => props.delayModifier}ms * 8);
+    animation-delay: calc(${(props) => props.delayModifier}ms * 8);
   }
 
   .rhombus.big {
-    height: calc(${props => props.size}px / 3);
-    width: calc(${props => props.size}px / 3);
-    animation-duration: ${props => props.animationDuration}ms;
-    top: calc(${props => props.size}px / 3);
-    left: calc(${props => props.size}px / 3);
-    background-color: ${props => props.color};
+    height: calc(${(props) => props.size}px / 3);
+    width: calc(${(props) => props.size}px / 3);
+    animation-duration: ${(props) => props.animationDuration}ms;
+    top: calc(${(props) => props.size}px / 3);
+    left: calc(${(props) => props.size}px / 3);
+    background-color: ${(props) => props.color};
     animation: breeding-rhombus-spinner-animation-child-big
-      ${props => props.animationDuration} infinite;
+      ${(props) => props.animationDuration} infinite;
     animation-delay: 0.5s;
   }
 
@@ -134,13 +134,6 @@ const propTypes = {
   style: PropTypes.object,
 };
 
-const defaultProps = {
-  size: 150,
-  color: '#fff',
-  animationDuration: 2000,
-  className: '',
-};
-
 function generateRhombusChildren(num) {
   return Array.from({ length: num }).map((val, index) => (
     <div key={index} className={`rhombus child-${index + 1}`} />
@@ -148,10 +141,10 @@ function generateRhombusChildren(num) {
 }
 
 const BreedingRhombusSpinner = ({
-  size,
-  color,
-  animationDuration,
-  className,
+  size = 150,
+  color = '#fff',
+  animationDuration = 2000,
+  className = '',
   style,
   ...props
 }) => (
@@ -170,6 +163,5 @@ const BreedingRhombusSpinner = ({
 );
 
 BreedingRhombusSpinner.propTypes = propTypes;
-BreedingRhombusSpinner.defaultProps = defaultProps;
 
 export default BreedingRhombusSpinner;

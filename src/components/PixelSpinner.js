@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Pixels = styled.div`
-  height: ${props => props.size}px;
-  width: ${props => props.size}px;
+  height: ${(props) => props.size}px;
+  width: ${(props) => props.size}px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -15,44 +15,55 @@ const Pixels = styled.div`
   }
 
   .pixel-spinner-inner {
-    width: ${props => props.pixelSize}px;
-    height: ${props => props.pixelSize}px;
-    background-color: ${props => props.color};
-    color: ${props => props.color};
+    width: ${(props) => props.pixelSize}px;
+    height: ${(props) => props.pixelSize}px;
+    background-color: ${(props) => props.color};
+    color: ${(props) => props.color};
 
-    box-shadow:
-      ${props => props.pixelSize * 1.5}px ${props => props.pixelSize * 1.5}px 0 0,
-      ${props => props.pixelSize * -1.5}px ${props => props.pixelSize * -1.5}px 0 0,
-      ${props => props.pixelSize * 1.5}px ${props => props.pixelSize * -1.5}px 0 0,
-      ${props => props.pixelSize * -1.5}px ${props => props.pixelSize * 1.5}px 0 0,
-      0 ${props => props.pixelSize * 1.5}px 0 0,
-      ${props => props.pixelSize * 1.5}px 0 0 0,
-      ${props => props.pixelSize * -1.5}px 0 0 0,
-      0 ${props => props.pixelSize * -1.5}px 0 0;
-    animation: pixel-spinner-animation ${props => props.animationDuration}ms
+    box-shadow: ${(props) => props.pixelSize * 1.5}px
+        ${(props) => props.pixelSize * 1.5}px 0 0,
+      ${(props) => props.pixelSize * -1.5}px
+        ${(props) => props.pixelSize * -1.5}px 0 0,
+      ${(props) => props.pixelSize * 1.5}px
+        ${(props) => props.pixelSize * -1.5}px 0 0,
+      ${(props) => props.pixelSize * -1.5}px
+        ${(props) => props.pixelSize * 1.5}px 0 0,
+      0 ${(props) => props.pixelSize * 1.5}px 0 0,
+      ${(props) => props.pixelSize * 1.5}px 0 0 0,
+      ${(props) => props.pixelSize * -1.5}px 0 0 0,
+      0 ${(props) => props.pixelSize * -1.5}px 0 0;
+    animation: pixel-spinner-animation ${(props) => props.animationDuration}ms
       linear infinite;
   }
 
   @keyframes pixel-spinner-animation {
     50% {
-      box-shadow:
-        ${props => props.pixelSize * 2}px ${props => props.pixelSize * 2}px 0 0,
-        ${props => props.pixelSize * -2}px ${props => props.pixelSize * -2}px 0 0,
-        ${props => props.pixelSize * 2}px ${props => props.pixelSize * -2}px 0 0,
-        ${props => props.pixelSize * -2}px ${props => props.pixelSize * 2}px 0 0,
-        0 ${props => props.pixelSize}px 0 0, ${props => props.pixelSize}px 0 0 0,
-        ${props => props.pixelSize * -1}px 0 0 0,
-        0 ${props => props.pixelSize * -1}px 0 0;
+      box-shadow: ${(props) => props.pixelSize * 2}px
+          ${(props) => props.pixelSize * 2}px 0 0,
+        ${(props) => props.pixelSize * -2}px
+          ${(props) => props.pixelSize * -2}px 0 0,
+        ${(props) => props.pixelSize * 2}px ${(props) => props.pixelSize * -2}px
+          0 0,
+        ${(props) => props.pixelSize * -2}px ${(props) => props.pixelSize * 2}px
+          0 0,
+        0 ${(props) => props.pixelSize}px 0 0,
+        ${(props) => props.pixelSize}px 0 0 0,
+        ${(props) => props.pixelSize * -1}px 0 0 0,
+        0 ${(props) => props.pixelSize * -1}px 0 0;
     }
     75% {
-      box-shadow:
-        ${props => props.pixelSize * 2}px ${props => props.pixelSize * 2}px 0 0,
-        ${props => props.pixelSize * -2}px ${props => props.pixelSize * -2}px 0 0,
-        ${props => props.pixelSize * 2}px ${props => props.pixelSize * -2}px 0 0,
-        ${props => props.pixelSize * -2}px ${props => props.pixelSize * 2}px 0 0,
-        0 ${props => props.pixelSize}px 0 0, ${props => props.pixelSize}px 0 0 0,
-        ${props => props.pixelSize * -1}px 0 0 0,
-        0 ${props => props.pixelSize * -1}px 0 0;
+      box-shadow: ${(props) => props.pixelSize * 2}px
+          ${(props) => props.pixelSize * 2}px 0 0,
+        ${(props) => props.pixelSize * -2}px
+          ${(props) => props.pixelSize * -2}px 0 0,
+        ${(props) => props.pixelSize * 2}px ${(props) => props.pixelSize * -2}px
+          0 0,
+        ${(props) => props.pixelSize * -2}px ${(props) => props.pixelSize * 2}px
+          0 0,
+        0 ${(props) => props.pixelSize}px 0 0,
+        ${(props) => props.pixelSize}px 0 0 0,
+        ${(props) => props.pixelSize * -1}px 0 0 0,
+        0 ${(props) => props.pixelSize * -1}px 0 0;
     }
     100% {
       transform: rotate(360deg);
@@ -68,18 +79,11 @@ const propTypes = {
   style: PropTypes.object,
 };
 
-const defaultProps = {
-  size: 70,
-  color: '#fff',
-  animationDuration: 1500,
-  className: '',
-};
-
 const PixelSpinner = ({
-  size,
-  color,
-  animationDuration,
-  className,
+  size = 70,
+  color = '#fff',
+  animationDuration = 1500,
+  className = '',
   style,
   ...props
 }) => {
@@ -100,7 +104,6 @@ const PixelSpinner = ({
   );
 };
 
-PixelSpinner.propTypes = PropTypes;
-PixelSpinner.defaultProps = defaultProps;
+PixelSpinner.propTypes = propTypes;
 
 export default PixelSpinner;

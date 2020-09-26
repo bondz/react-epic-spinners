@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ScalingSquares = styled.div`
-  height: ${props => props.size}px;
-  width: ${props => props.size}px;
+  height: ${(props) => props.size}px;
+  width: ${(props) => props.size}px;
   position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  animation: scaling-squares-animation ${props => props.animationDuration}ms;
+  animation: scaling-squares-animation ${(props) => props.animationDuration}ms;
   animation-iteration-count: infinite;
   transform: rotate(0deg);
 
@@ -19,13 +19,14 @@ const ScalingSquares = styled.div`
   }
 
   .square {
-    height: calc(${props => props.size}px * 0.25 / 1.3);
-    width: calc(${props => props.size}px * 0.25 / 1.3);
+    height: calc(${(props) => props.size}px * 0.25 / 1.3);
+    width: calc(${(props) => props.size}px * 0.25 / 1.3);
     margin-right: auto;
     margin-left: auto;
-    border: calc(${props => props.size}px * 0.04 / 1.3) solid ${props => props.color};
+    border: calc(${(props) => props.size}px * 0.04 / 1.3) solid
+      ${(props) => props.color};
     position: absolute;
-    animation-duration: ${props => props.animationDuration}ms;
+    animation-duration: ${(props) => props.animationDuration}ms;
     animation-iteration-count: infinite;
   }
   .square:nth-child(1) {
@@ -78,13 +79,6 @@ const propTypes = {
   style: PropTypes.object,
 };
 
-const defaultProps = {
-  size: 65,
-  color: '#fff',
-  animationDuration: 1250,
-  className: '',
-};
-
 function generateSpinners(num) {
   return Array.from({ length: num }).map((val, index) => (
     <div key={index} className="square" />
@@ -92,10 +86,10 @@ function generateSpinners(num) {
 }
 
 const ScalingSquaresSpinner = ({
-  size,
-  color,
-  animationDuration,
-  className,
+  size = 65,
+  color = '#fff',
+  animationDuration = 1250,
+  className = '',
   style,
   ...props
 }) => (
@@ -112,6 +106,5 @@ const ScalingSquaresSpinner = ({
 );
 
 ScalingSquaresSpinner.propTypes = propTypes;
-ScalingSquaresSpinner.defaultProps = defaultProps;
 
 export default ScalingSquaresSpinner;

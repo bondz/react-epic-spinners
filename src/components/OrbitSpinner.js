@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Orbit = styled.div`
-  height: ${props => props.size}px;
-  width: ${props => props.size}px;
+  height: ${(props) => props.size}px;
+  width: ${(props) => props.size}px;
   border-radius: 50%;
   perspective: 800px;
 
@@ -23,22 +23,22 @@ const Orbit = styled.div`
     left: 0%;
     top: 0%;
     animation: orbit-spinner-orbit-one-animation
-      ${props => props.animationDuration}ms linear infinite;
-    border-bottom: 3px solid ${props => props.color};
+      ${(props) => props.animationDuration}ms linear infinite;
+    border-bottom: 3px solid ${(props) => props.color};
   }
   .orbit:nth-child(2) {
     right: 0%;
     top: 0%;
     animation: orbit-spinner-orbit-two-animation
-      ${props => props.animationDuration}ms linear infinite;
-    border-right: 3px solid ${props => props.color};
+      ${(props) => props.animationDuration}ms linear infinite;
+    border-right: 3px solid ${(props) => props.color};
   }
   .orbit:nth-child(3) {
     right: 0%;
     bottom: 0%;
     animation: orbit-spinner-orbit-three-animation
-      ${props => props.animationDuration}ms linear infinite;
-    border-top: 3px solid ${props => props.color};
+      ${(props) => props.animationDuration}ms linear infinite;
+    border-top: 3px solid ${(props) => props.color};
   }
   @keyframes orbit-spinner-orbit-one-animation {
     0% {
@@ -74,18 +74,11 @@ const propTypes = {
   style: PropTypes.object,
 };
 
-const defaultProps = {
-  size: 50,
-  color: '#fff',
-  animationDuration: 1000,
-  className: '',
-};
-
 const OrbitSpinner = ({
-  size,
-  color,
-  animationDuration,
-  className,
+  size = 50,
+  color = '#fff',
+  animationDuration = 1000,
+  className = '',
   style,
   ...props
 }) => (
@@ -104,6 +97,5 @@ const OrbitSpinner = ({
 );
 
 OrbitSpinner.propTypes = propTypes;
-OrbitSpinner.defaultProps = defaultProps;
 
 export default OrbitSpinner;

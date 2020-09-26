@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const SwappingSquare = styled.div`
-  height: ${props => props.size}px;
-  width: ${props => props.size}px;
+  height: ${(props) => props.size}px;
+  width: ${(props) => props.size}px;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -16,11 +16,11 @@ const SwappingSquare = styled.div`
   }
 
   .square {
-    height: calc(${props => props.size}px * 0.25 / 1.3);
-    width: calc(${props => props.size}px * 0.25 / 1.3);
-    animation-duration: ${props => props.animationDuration}ms;
-    border: calc(${props => props.size}px * 0.04 / 1.3) solid
-      ${props => props.color};
+    height: calc(${(props) => props.size}px * 0.25 / 1.3);
+    width: calc(${(props) => props.size}px * 0.25 / 1.3);
+    animation-duration: ${(props) => props.animationDuration}ms;
+    border: calc(${(props) => props.size}px * 0.04 / 1.3) solid
+      ${(props) => props.color};
     margin-right: auto;
     margin-left: auto;
     position: absolute;
@@ -28,7 +28,7 @@ const SwappingSquare = styled.div`
   }
   .square:nth-child(1) {
     animation-name: swapping-squares-animation-child-1;
-    animation-delay: ${props => props.animationDuration * 0.5}ms;
+    animation-delay: ${(props) => props.animationDuration * 0.5}ms;
   }
   .square:nth-child(2) {
     animation-name: swapping-squares-animation-child-2;
@@ -36,7 +36,7 @@ const SwappingSquare = styled.div`
   }
   .square:nth-child(3) {
     animation-name: swapping-squares-animation-child-3;
-    animation-delay: ${props => props.animationDuration * 0.5}ms;
+    animation-delay: ${(props) => props.animationDuration * 0.5}ms;
   }
   .square:nth-child(4) {
     animation-name: swapping-squares-animation-child-4;
@@ -72,13 +72,6 @@ const propTypes = {
   style: PropTypes.object,
 };
 
-const defaultProps = {
-  size: 65,
-  color: '#fff',
-  animationDuration: 1000,
-  className: '',
-};
-
 function generateSpinners(num) {
   return Array.from({ length: num }).map((val, index) => (
     <div key={index} className="square" />
@@ -86,10 +79,10 @@ function generateSpinners(num) {
 }
 
 const SwappingSquaresSpinner = ({
-  size,
-  color,
-  animationDuration,
-  className,
+  size = 65,
+  color = '#fff',
+  animationDuration = 1000,
+  className = '',
   style,
   ...props
 }) => (
@@ -106,6 +99,5 @@ const SwappingSquaresSpinner = ({
 );
 
 SwappingSquaresSpinner.propTypes = propTypes;
-SwappingSquaresSpinner.defaultProps = defaultProps;
 
 export default SwappingSquaresSpinner;

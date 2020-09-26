@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Trinity = styled.div`
-  height: ${props => props.size}px;
-  width: ${props => props.size}px;
+  height: ${(props) => props.size}px;
+  width: ${(props) => props.size}px;
   padding: 3px;
   position: relative;
   display: flex;
@@ -22,28 +22,28 @@ const Trinity = styled.div`
     position: absolute;
     display: block;
     border-radius: 50%;
-    border: 3px solid ${props => props.color};
+    border: 3px solid ${(props) => props.color};
     opacity: 1;
   }
   .circle:nth-child(1) {
-    height: ${props => props.outerWidth}px;
-    width: ${props => props.outerWidth}px;
+    height: ${(props) => props.outerWidth}px;
+    width: ${(props) => props.outerWidth}px;
     animation: trinity-rings-spinner-circle1-animation
-      ${props => props.animationDuration}ms infinite linear;
+      ${(props) => props.animationDuration}ms infinite linear;
     border-width: 3px;
   }
   .circle:nth-child(2) {
-    height: calc(${props => props.outerWidth}px * 0.65);
-    width: calc(${props => props.outerWidth}px * 0.65);
+    height: calc(${(props) => props.outerWidth}px * 0.65);
+    width: calc(${(props) => props.outerWidth}px * 0.65);
     animation: trinity-rings-spinner-circle2-animation
-      ${props => props.animationDuration}ms infinite linear;
+      ${(props) => props.animationDuration}ms infinite linear;
     border-width: 2px;
   }
   .circle:nth-child(3) {
-    height: calc(${props => props.outerWidth}px * 0.1);
-    width: calc(${props => props.outerWidth}px * 0.1);
+    height: calc(${(props) => props.outerWidth}px * 0.1);
+    width: calc(${(props) => props.outerWidth}px * 0.1);
     animation: trinity-rings-spinner-circle3-animation
-      ${props => props.animationDuration}ms infinite linear;
+      ${(props) => props.animationDuration}ms infinite linear;
     border-width: 1px;
   }
   @keyframes trinity-rings-spinner-circle1-animation {
@@ -80,18 +80,11 @@ const propTypes = {
   style: PropTypes.object,
 };
 
-const defaultProps = {
-  size: 66,
-  color: '#fff',
-  animationDuration: 1500,
-  className: '',
-};
-
 const TrinityRingsSpinner = ({
-  size,
-  color,
-  animationDuration,
-  className,
+  size = 66,
+  color = '#fff',
+  animationDuration = 1500,
+  className = '',
   style,
   ...props
 }) => {
@@ -116,6 +109,5 @@ const TrinityRingsSpinner = ({
 };
 
 TrinityRingsSpinner.propTypes = propTypes;
-TrinityRingsSpinner.defaultProps = defaultProps;
 
 export default TrinityRingsSpinner;
