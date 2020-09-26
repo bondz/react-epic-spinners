@@ -1,7 +1,7 @@
 {
   "name": "react-epic-spinners",
   "description": "Reusable react implementation of epic-spinners using styled-components",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "main": "./index.js",
   "module": "dist/react-epic-spinners.esm.js",
   "browser": "dist/react-epic-spinners.umd.min.js",
