@@ -22,8 +22,7 @@ const cjs = [
     plugins: [
       babel({
         exclude: /node_modules/,
-        babelHelpers: 'runtime',
-        plugins: ['@babel/transform-runtime']
+        babelHelpers: 'bundled'
       }),
       replace({ 'process.env.NODE_ENV': JSON.stringify('development') })
     ]
@@ -35,9 +34,8 @@ const cjs = [
     plugins: [
       babel({
         exclude: /node_modules/,
-        babelHelpers: 'runtime',
+        babelHelpers: 'bundled',
         plugins: [
-          '@babel/transform-runtime',
           ['babel-plugin-transform-react-remove-prop-types', {
             removeImport: true
           }]
@@ -57,8 +55,7 @@ const esm = [
     plugins: [
       babel({
         exclude: /node_modules/,
-        babelHelpers: 'runtime',
-        plugins: [['@babel/transform-runtime', { useESModules: true }]]
+        babelHelpers: 'bundled'
       }),
       sizeSnapshot()
     ]

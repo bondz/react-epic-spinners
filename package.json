@@ -19,9 +19,8 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@babel/runtime": "7.11.2",
-    "react": ">=16.13.x",
-    "styled-components": ">=5.2.0"
+    "react": ">=0.14.x",
+    "styled-components": ">=2.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
