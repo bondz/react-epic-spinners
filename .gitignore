@@ -4,3 +4,4 @@ package-lock.json
 .rpt2_cache
 *.log
 dist
+.vscode
