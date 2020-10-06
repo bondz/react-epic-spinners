@@ -1,33 +1,33 @@
-import { StatelessComponent } from 'react';
+import { FunctionComponent, CSSProperties } from 'react';
 
 interface EpicProps {
   size?: number;
   animationDuration?: number;
   color?: string;
   className?: string;
-  style?: object;
+  style?: CSSProperties;
 }
 
-declare const AtomSpinner: StatelessComponent<EpicProps>;
-declare const BreedingRhombusSpinner: StatelessComponent<EpicProps>;
-declare const CirclesToRhombusesSpinner: StatelessComponent<EpicProps>;
-declare const FingerprintSpinner: StatelessComponent<EpicProps>;
-declare const FlowerSpinner: StatelessComponent<EpicProps>;
-declare const FulfillingBouncingCircleSpinner: StatelessComponent<EpicProps>;
-declare const FulfillingSquareSpinner: StatelessComponent<EpicProps>;
-declare const HalfCircleSpinner: StatelessComponent<EpicProps>;
-declare const HollowDotsSpinner: StatelessComponent<EpicProps>;
-declare const IntersectingCirclesSpinner: StatelessComponent<EpicProps>;
-declare const LoopingRhombusesSpinner: StatelessComponent<EpicProps>;
-declare const OrbitSpinner: StatelessComponent<EpicProps>;
-declare const PixelSpinner: StatelessComponent<EpicProps>;
-declare const RadarSpinner: StatelessComponent<EpicProps>;
-declare const ScalingSquaresSpinner: StatelessComponent<EpicProps>;
-declare const SelfBuildingSquareSpinner: StatelessComponent<EpicProps>;
-declare const SemipolarSpinner: StatelessComponent<EpicProps>;
-declare const SpringSpinner: StatelessComponent<EpicProps>;
-declare const SwappingSquaresSpinner: StatelessComponent<EpicProps>;
-declare const TrinityRingsSpinner: StatelessComponent<EpicProps>;
+declare const AtomSpinner: FunctionComponent<EpicProps>;
+declare const BreedingRhombusSpinner: FunctionComponent<EpicProps>;
+declare const CirclesToRhombusesSpinner: FunctionComponent<EpicProps>;
+declare const FingerprintSpinner: FunctionComponent<EpicProps>;
+declare const FlowerSpinner: FunctionComponent<EpicProps>;
+declare const FulfillingBouncingCircleSpinner: FunctionComponent<EpicProps>;
+declare const FulfillingSquareSpinner: FunctionComponent<EpicProps>;
+declare const HalfCircleSpinner: FunctionComponent<EpicProps>;
+declare const HollowDotsSpinner: FunctionComponent<EpicProps>;
+declare const IntersectingCirclesSpinner: FunctionComponent<EpicProps>;
+declare const LoopingRhombusesSpinner: FunctionComponent<EpicProps>;
+declare const OrbitSpinner: FunctionComponent<EpicProps>;
+declare const PixelSpinner: FunctionComponent<EpicProps>;
+declare const RadarSpinner: FunctionComponent<EpicProps>;
+declare const ScalingSquaresSpinner: FunctionComponent<EpicProps>;
+declare const SelfBuildingSquareSpinner: FunctionComponent<EpicProps>;
+declare const SemipolarSpinner: FunctionComponent<EpicProps>;
+declare const SpringSpinner: FunctionComponent<EpicProps>;
+declare const SwappingSquaresSpinner: FunctionComponent<EpicProps>;
+declare const TrinityRingsSpinner: FunctionComponent<EpicProps>;
 
 export {
   AtomSpinner,

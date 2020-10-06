@@ -1,9 +1,9 @@
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import babel from 'rollup-plugin-babel';
-import replace from 'rollup-plugin-replace';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import babel from '@rollup/plugin-babel';
+import replace from '@rollup/plugin-replace';
 import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
-import { uglify } from 'rollup-plugin-uglify';
+import { terser } from 'rollup-plugin-terser';
 
 import pkg from './package.json';
 
@@ -11,7 +11,7 @@ const input = 'src/index.js';
 const globalName = 'ReactEpicSpinners';
 
 function external(id) {
-  return !id.startsWith('.') && !id.startsWith('/');
+  return !id.startsWith('.') && !id.startsWith('/') || id.includes('@babel/runtime');
 }
 
 const cjs = [
@@ -20,7 +20,11 @@ const cjs = [
     output: { file: `dist/${pkg.name}.cjs.js`, format: 'cjs' },
     external,
     plugins: [
-      babel({ exclude: /node_modules/ }),
+      babel({
+        exclude: /node_modules/,
+        babelHelpers: 'runtime',
+        plugins: ['@babel/transform-runtime']
+      }),
       replace({ 'process.env.NODE_ENV': JSON.stringify('development') })
     ]
   },
@@ -29,9 +33,18 @@ const cjs = [
     output: { file: `dist/${pkg.name}.cjs.min.js`, format: 'cjs' },
     external,
     plugins: [
-      babel({ exclude: /node_modules/ }),
+      babel({
+        exclude: /node_modules/,
+        babelHelpers: 'runtime',
+        plugins: [
+          '@babel/transform-runtime',
+          ['babel-plugin-transform-react-remove-prop-types', {
+            removeImport: true
+          }]
+        ]
+      }),
       replace({ 'process.env.NODE_ENV': JSON.stringify('production') }),
-      uglify()
+      terser()
     ]
   }
 ];
@@ -44,7 +57,7 @@ const esm = [
     plugins: [
       babel({
         exclude: /node_modules/,
-        runtimeHelpers: true,
+        babelHelpers: 'runtime',
         plugins: [['@babel/transform-runtime', { useESModules: true }]]
       }),
       sizeSnapshot()
@@ -71,6 +84,7 @@ const umd = [
     plugins: [
       babel({
         exclude: /node_modules/,
+        babelHelpers: 'bundled'
       }),
       resolve(),
       commonjs({
@@ -92,6 +106,12 @@ const umd = [
     plugins: [
       babel({
         exclude: /node_modules/,
+        babelHelpers: 'bundled',
+        plugins: [
+          ['babel-plugin-transform-react-remove-prop-types', {
+            removeImport: true
+          }]
+        ]
       }),
       resolve(),
       commonjs({
@@ -99,7 +119,7 @@ const umd = [
       }),
       replace({ 'process.env.NODE_ENV': JSON.stringify('production') }),
       sizeSnapshot(),
-      uglify()
+      terser()
     ]
   }
 ];

@@ -1,26 +1,50 @@
 {
   "dist/react-epic-spinners.esm.js": {
-    "bundled": 77206,
-    "minified": 61425,
-    "gzipped": 6206,
+    "bundled": 80307,
+    "minified": 60866,
+    "gzipped": 6098,
     "treeshaked": {
       "rollup": {
-        "code": 43336,
+        "code": 43648,
         "import_statements": 249
       },
       "webpack": {
-        "code": 56343
+        "code": 51483
       }
     }
   },
   "dist/react-epic-spinners.umd.js": {
-    "bundled": 82669,
-    "minified": 55821,
-    "gzipped": 6322
+    "bundled": 85650,
+    "minified": 56254,
+    "gzipped": 6413
   },
   "dist/react-epic-spinners.umd.min.js": {
-    "bundled": 82669,
-    "minified": 55821,
-    "gzipped": 6322
+    "bundled": 85650,
+    "minified": 56254,
+    "gzipped": 6413
+  },
+  "react-epic-spinners.esm.js": {
+    "bundled": 81074,
+    "minified": 61646,
+    "gzipped": 6103,
+    "treeshaked": {
+      "rollup": {
+        "code": 44406,
+        "import_statements": 249
+      },
+      "webpack": {
+        "code": 52263
+      }
+    }
+  },
+  "react-epic-spinners.umd.js": {
+    "bundled": 90112,
+    "minified": 58482,
+    "gzipped": 6437
+  },
+  "react-epic-spinners.umd.min.js": {
+    "bundled": 83299,
+    "minified": 55249,
+    "gzipped": 6015
   }
 }
