@@ -24,13 +24,13 @@
     "gzipped": 6413
   },
   "react-epic-spinners.esm.js": {
-    "bundled": 81074,
-    "minified": 61646,
-    "gzipped": 6103,
+    "bundled": 81680,
+    "minified": 61855,
+    "gzipped": 6287,
     "treeshaked": {
       "rollup": {
-        "code": 44406,
-        "import_statements": 249
+        "code": 44281,
+        "import_statements": 73
       },
       "webpack": {
         "code": 52263
