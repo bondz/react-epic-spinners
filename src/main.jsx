@@ -25,20 +25,6 @@ import {
 } from './index';
 
 function App() {
-  const [color, setColor] = useState('#ff1d5e');
-  const [bgColor, setBGColor] = useState('#030810');
-
-  function changeSpinnerColor(e) {
-    setColor(e.target.value);
-  }
-
-  function changePageBGColor(e) {
-    const selectedColor = e.target.value;
-
-    setBGColor(selectedColor);
-    document.documentElement.style.setProperty('--bg-color', selectedColor);
-  }
-
   return (
     <>
       <main className="main-container">
@@ -68,29 +54,11 @@ function App() {
             <div className="get-started-code">
               <p>npm install react-epic-spinners</p>
               <p>yarn add react-epic-spinners</p>
-              <div>
-                <label>
-                  BG:
-                  <input
-                    type="color"
-                    value={bgColor}
-                    onChange={changePageBGColor}
-                  />
-                </label>
-                <label>
-                  Color:
-                  <input
-                    type="color"
-                    value={color}
-                    onChange={changeSpinnerColor}
-                  />
-                </label>
-              </div>
             </div>
           </div>
         </div>
 
-        <Spinners color={color} />
+        <Spinners />
       </main>
       <footer>
         <h4>
@@ -124,12 +92,12 @@ function App() {
   );
 }
 
-function Spinners({ color }) {
+function Spinners() {
   return (
     <>
       <div className="spinner-holder">
         <div className="spinner-element">
-          <AtomSpinner color={color} size={70} animationDuration={2000} />
+          <AtomSpinner color="#ff1d5e" size={70} animationDuration={2000} />
         </div>
         <div className="name">Atom</div>
       </div>
@@ -137,7 +105,7 @@ function Spinners({ color }) {
       <div className="spinner-holder">
         <div className="spinner-element">
           <BreedingRhombusSpinner
-            color={color}
+            color="#ff1d5e"
             size={65}
             animationDuration={2000}
           />
@@ -148,7 +116,7 @@ function Spinners({ color }) {
       <div className="spinner-holder">
         <div className="spinner-element">
           <CirclesToRhombusesSpinner
-            color={color}
+            color="#ff1d5e"
             circleSize={15}
             circlesNum={3}
             animationDuration={1200}
@@ -160,7 +128,7 @@ function Spinners({ color }) {
       <div className="spinner-holder">
         <div className="spinner-element">
           <FingerprintSpinner
-            color={color}
+            color="#ff1d5e"
             size={70}
             animationDuration={1200}
           />
@@ -169,14 +137,14 @@ function Spinners({ color }) {
       </div>
       <div className="spinner-holder">
         <div className="spinner-element">
-          <FlowerSpinner color={color} size={70} animationDuration={1200} />
+          <FlowerSpinner color="#ff1d5e" size={70} animationDuration={1200} />
         </div>
         <div className="name">Flower</div>
       </div>
       <div className="spinner-holder">
         <div className="spinner-element">
           <FulfillingBouncingCircleSpinner
-            color={color}
+            color="#ff1d5e"
             size={70}
             animationDuration={2000}
           />
@@ -186,7 +154,7 @@ function Spinners({ color }) {
       <div className="spinner-holder">
         <div className="spinner-element">
           <FulfillingSquareSpinner
-            color={color}
+            color="#ff1d5e"
             size={70}
             animationDuration={1200}
           />
@@ -195,14 +163,18 @@ function Spinners({ color }) {
       </div>
       <div className="spinner-holder">
         <div className="spinner-element">
-          <HalfCircleSpinner color={color} size={70} animationDuration={1400} />
+          <HalfCircleSpinner
+            color="#ff1d5e"
+            size={70}
+            animationDuration={1400}
+          />
         </div>
         <div className="name">Half Circle</div>
       </div>
       <div className="spinner-holder">
         <div className="spinner-element">
           <HollowDotsSpinner
-            color={color}
+            color="#ff1d5e"
             dotSize={15}
             dotsNum={3}
             animationDuration={1400}
@@ -213,7 +185,7 @@ function Spinners({ color }) {
       <div className="spinner-holder">
         <div className="spinner-element">
           <IntersectingCirclesSpinner
-            color={color}
+            color="#ff1d5e"
             size={70}
             animationDuration={1400}
           />
@@ -223,7 +195,7 @@ function Spinners({ color }) {
       <div className="spinner-holder">
         <div className="spinner-element">
           <LoopingRhombusesSpinner
-            color={color}
+            color="#ff1d5e"
             rhombusSize={15}
             animationDuration={1200}
           />
@@ -232,21 +204,21 @@ function Spinners({ color }) {
       </div>
       <div className="spinner-holder">
         <div className="spinner-element">
-          <OrbitSpinner color={color} size={55} animationDuration={1400} />
+          <OrbitSpinner color="#ff1d5e" size={55} animationDuration={1400} />
         </div>
         <div className="name">Orbit</div>
       </div>
 
       <div className="spinner-holder">
         <div className="spinner-element">
-          <PixelSpinner color={color} size={70} animationDuration={1400} />
+          <PixelSpinner color="#ff1d5e" size={70} animationDuration={1400} />
         </div>
         <div className="name">Pixel</div>
       </div>
 
       <div className="spinner-holder">
         <div className="spinner-element">
-          <RadarSpinner size={70} color={color} animationDuration={1200} />
+          <RadarSpinner size={70} color="#ff1d5e" animationDuration={1200} />
         </div>
         <div className="name">Radar</div>
       </div>
@@ -254,7 +226,7 @@ function Spinners({ color }) {
       <div className="spinner-holder">
         <div className="spinner-element">
           <ScalingSquaresSpinner
-            color={color}
+            color="#ff1d5e"
             size={70}
             animationDuration={1200}
           />
@@ -265,7 +237,7 @@ function Spinners({ color }) {
       <div className="spinner-holder">
         <div className="spinner-element">
           <SelfBuildingSquareSpinner
-            color={color}
+            color="#ff1d5e"
             size={70}
             animationDuration={1400}
           />
@@ -275,14 +247,18 @@ function Spinners({ color }) {
 
       <div className="spinner-holder">
         <div className="spinner-element">
-          <SemipolarSpinner color={color} size={70} animationDuration={1400} />
+          <SemipolarSpinner
+            color="#ff1d5e"
+            size={70}
+            animationDuration={1400}
+          />
         </div>
         <div className="name">SemiPolar</div>
       </div>
 
       <div className="spinner-holder">
         <div className="spinner-element">
-          <SpringSpinner color={color} size={70} animationDuration={1400} />
+          <SpringSpinner color="#ff1d5e" size={70} animationDuration={1400} />
         </div>
         <div className="name">Spring</div>
       </div>
@@ -290,7 +266,7 @@ function Spinners({ color }) {
       <div className="spinner-holder">
         <div className="spinner-element">
           <SwappingSquaresSpinner
-            color={color}
+            color="#ff1d5e"
             size={70}
             animationDuration={1400}
           />
@@ -301,7 +277,7 @@ function Spinners({ color }) {
       <div className="spinner-holder">
         <div className="spinner-element">
           <TrinityRingsSpinner
-            color={color}
+            color="#ff1d5e"
             size={70}
             animationDuration={1200}
           />
