@@ -5,3 +5,5 @@ package-lock.json
 *.log
 dist
 .vscode
+dist-ssr
+*.local
