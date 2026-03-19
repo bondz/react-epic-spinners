@@ -1,0 +1,68 @@
+name: Create Release PR
+
+on:
+  repository_dispatch:
+    types: [release-command]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Extract version
+        run: |
+          CURRENT_VERSION=$(jq -r .version package.json)
+          IFS='.' read -ra VERSION_PARTS <<< "$CURRENT_VERSION"
+          MAJOR=${VERSION_PARTS[0]}
+          MINOR=${VERSION_PARTS[1]}
+          PATCH=${VERSION_PARTS[2]}
+
+          NAMED_VERSION="${{ github.event.client_payload.slash_command.args.named.version }}"
+          RAW_ARGS="${{ github.event.client_payload.slash_command.args.all }}"
+          RAW_ARGS=$(echo "$RAW_ARGS" | tr '[:upper:]' '[:lower:]')
+
+          if [[ -n "$NAMED_VERSION" ]]; then
+            VERSION="$NAMED_VERSION"
+          elif [[ "$RAW_ARGS" == "patch" ]]; then
+            PATCH=$((PATCH + 1))
+          elif [[ "$RAW_ARGS" == "minor" ]]; then
+            MINOR=$((MINOR + 1))
+            PATCH=0
+          elif [[ "$RAW_ARGS" == "major" ]]; then
+            MAJOR=$((MAJOR + 1))
+            MINOR=0
+            PATCH=0
+          else
+            echo "Invalid release argument: '$RAW_ARGS'"
+            exit 1
+          fi
+
+          if [[ -z "$VERSION" ]]; then
+            VERSION="$MAJOR.$MINOR.$PATCH"
+          fi
+
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Bump version
+        run: |
+          npm version $VERSION --allow-same-version --no-git-tag-version --no-commit-hooks
+
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: main
+          branch: release-v${{ env.VERSION }}
+          title: "Release v${{ env.VERSION }}"
+          body: "Automated release triggered by slash command"
+          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          labels: "release"
