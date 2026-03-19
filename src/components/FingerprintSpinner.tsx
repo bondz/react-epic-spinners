@@ -1,10 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
+import type { EpicSpinnerProps } from "../types";
 import styled from "styled-components";
 
-const RingSpinner = styled.div`
-  height: ${(props) => props.size}px;
-  width: ${(props) => props.size}px;
+const RingSpinner = styled.div<EpicSpinnerProps & { ringBase: number; containerPadding: number }>`
+  height: ${(props) => props.size!}px;
+  width: ${(props) => props.size!}px;
   padding: ${(props) => props.containerPadding}px;
   overflow: hidden;
   position: relative;
@@ -17,9 +16,8 @@ const RingSpinner = styled.div`
     position: absolute;
     border-radius: 50%;
     border: 2px solid transparent;
-    border-top-color: ${(props) => props.color};
-    animation: fingerprint-spinner-animation
-      ${(props) => props.animationDuration}ms
+    border-top-color: ${(props) => props.color!};
+    animation: fingerprint-spinner-animation ${(props) => props.animationDuration!}ms
       cubic-bezier(0.68, -0.75, 0.265, 1.75) infinite forwards;
     margin: auto;
     bottom: 0;
@@ -80,28 +78,20 @@ const RingSpinner = styled.div`
   }
 `;
 
-const propTypes = {
-  size: PropTypes.number,
-  animationDuration: PropTypes.number,
-  color: PropTypes.string,
-  className: PropTypes.string,
-  style: PropTypes.object,
-};
-
-function generateRings(num) {
+function generateRings(num: number) {
   return Array.from({ length: num }).map((val, index) => (
     <div key={index} className="spinner-ring" />
   ));
 }
 
-const FingerprintSpinner = ({
+function FingerprintSpinner({
   size = 60,
   color = "#fff",
   animationDuration = 1500,
   className = "",
   style,
   ...props
-}) => {
+}: EpicSpinnerProps) {
   const ringsNum = 9;
   const containerPadding = 2;
   const outerRingSize = size - containerPadding * 2;
@@ -121,8 +111,6 @@ const FingerprintSpinner = ({
       {generateRings(ringsNum)}
     </RingSpinner>
   );
-};
-
-FingerprintSpinner.propTypes = propTypes;
+}
 
 export default FingerprintSpinner;

@@ -1,10 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import type { EpicSpinnerProps } from "../types";
+import styled from "styled-components";
 
-const Trinity = styled.div`
-  height: ${(props) => props.size}px;
-  width: ${(props) => props.size}px;
+const Trinity = styled.div<EpicSpinnerProps & { outerWidth: number }>`
+  height: ${(props) => props.size!}px;
+  width: ${(props) => props.size!}px;
   padding: 3px;
   position: relative;
   display: flex;
@@ -22,28 +21,28 @@ const Trinity = styled.div`
     position: absolute;
     display: block;
     border-radius: 50%;
-    border: 3px solid ${(props) => props.color};
+    border: 3px solid ${(props) => props.color!};
     opacity: 1;
   }
   .circle:nth-child(1) {
     height: ${(props) => props.outerWidth}px;
     width: ${(props) => props.outerWidth}px;
-    animation: trinity-rings-spinner-circle1-animation
-      ${(props) => props.animationDuration}ms infinite linear;
+    animation: trinity-rings-spinner-circle1-animation ${(props) => props.animationDuration!}ms
+      infinite linear;
     border-width: 3px;
   }
   .circle:nth-child(2) {
     height: calc(${(props) => props.outerWidth}px * 0.65);
     width: calc(${(props) => props.outerWidth}px * 0.65);
-    animation: trinity-rings-spinner-circle2-animation
-      ${(props) => props.animationDuration}ms infinite linear;
+    animation: trinity-rings-spinner-circle2-animation ${(props) => props.animationDuration!}ms
+      infinite linear;
     border-width: 2px;
   }
   .circle:nth-child(3) {
     height: calc(${(props) => props.outerWidth}px * 0.1);
     width: calc(${(props) => props.outerWidth}px * 0.1);
-    animation: trinity-rings-spinner-circle3-animation
-      ${(props) => props.animationDuration}ms infinite linear;
+    animation: trinity-rings-spinner-circle3-animation ${(props) => props.animationDuration!}ms
+      infinite linear;
     border-width: 1px;
   }
   @keyframes trinity-rings-spinner-circle1-animation {
@@ -72,22 +71,14 @@ const Trinity = styled.div`
   }
 `;
 
-const propTypes = {
-  size: PropTypes.number,
-  animationDuration: PropTypes.number,
-  color: PropTypes.string,
-  className: PropTypes.string,
-  style: PropTypes.object,
-};
-
-const TrinityRingsSpinner = ({
+function TrinityRingsSpinner({
   size = 66,
-  color = '#fff',
+  color = "#fff",
   animationDuration = 1500,
-  className = '',
+  className = "",
   style,
   ...props
-}) => {
+}: EpicSpinnerProps) {
   const containerPadding = 3;
   const outerWidth = size - containerPadding * 2;
 
@@ -96,7 +87,7 @@ const TrinityRingsSpinner = ({
       size={size}
       color={color}
       animationDuration={animationDuration}
-      className={`trinity-rings-spinner${className ? ' ' + className : ''}`}
+      className={`trinity-rings-spinner${className ? " " + className : ""}`}
       style={style}
       outerWidth={outerWidth}
       {...props}
@@ -106,8 +97,6 @@ const TrinityRingsSpinner = ({
       <div className="circle circle3" />
     </Trinity>
   );
-};
-
-TrinityRingsSpinner.propTypes = propTypes;
+}
 
 export default TrinityRingsSpinner;

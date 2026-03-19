@@ -1,10 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import type { EpicSpinnerProps } from "../types";
+import styled from "styled-components";
 
-const Radar = styled.div`
-  height: ${(props) => props.size}px;
-  width: ${(props) => props.size}px;
+const Radar = styled.div<EpicSpinnerProps & { borderWidth: number }>`
+  height: ${(props) => props.size!}px;
+  width: ${(props) => props.size!}px;
   position: relative;
 
   * {
@@ -17,20 +16,19 @@ const Radar = styled.div`
     width: 100%;
     top: 0;
     left: 0;
-    animation: radar-spinner-animation ${(props) => props.animationDuration}ms
-      infinite;
+    animation: radar-spinner-animation ${(props) => props.animationDuration!}ms infinite;
   }
   .circle:nth-child(1) {
     padding: ${(props) => props.borderWidth * 2 * 0}px;
-    animation-delay: ${(props) => props.animationDuration * 0.15}ms;
+    animation-delay: ${(props) => props.animationDuration! * 0.15}ms;
   }
   .circle:nth-child(2) {
     padding: ${(props) => props.borderWidth * 2 * 1}px;
-    animation-delay: ${(props) => props.animationDuration * 0.15}ms;
+    animation-delay: ${(props) => props.animationDuration! * 0.15}ms;
   }
   .circle:nth-child(3) {
     padding: ${(props) => props.borderWidth * 2 * 2}px;
-    animation-delay: ${(props) => props.animationDuration * 0.15}ms;
+    animation-delay: ${(props) => props.animationDuration! * 0.15}ms;
   }
   .circle:nth-child(4) {
     padding: ${(props) => props.borderWidth * 2 * 3}px;
@@ -44,8 +42,8 @@ const Radar = styled.div`
     border: ${(props) => props.borderWidth}px solid transparent;
   }
   .circle-inner {
-    border-left-color: ${(props) => props.color};
-    border-right-color: ${(props) => props.color};
+    border-left-color: ${(props) => props.color!};
+    border-right-color: ${(props) => props.color!};
   }
   @keyframes radar-spinner-animation {
     50% {
@@ -57,15 +55,7 @@ const Radar = styled.div`
   }
 `;
 
-const propTypes = {
-  size: PropTypes.number,
-  animationDuration: PropTypes.number,
-  color: PropTypes.string,
-  className: PropTypes.string,
-  style: PropTypes.object,
-};
-
-function generateSpinners(num) {
+function generateSpinners(num: number) {
   return Array.from({ length: num }).map((val, index) => (
     <div key={index} className="circle">
       <div className="circle-inner-container">
@@ -75,14 +65,14 @@ function generateSpinners(num) {
   ));
 }
 
-const RadarSpinner = ({
+function RadarSpinner({
   size = 110,
-  color = '#fff',
+  color = "#fff",
   animationDuration = 2000,
-  className = '',
+  className = "",
   style,
   ...props
-}) => {
+}: EpicSpinnerProps) {
   const borderWidth = (size * 5) / 110;
 
   return (
@@ -90,7 +80,7 @@ const RadarSpinner = ({
       size={size}
       color={color}
       animationDuration={animationDuration}
-      className={`radar-spinner${className ? ' ' + className : ''}`}
+      className={`radar-spinner${className ? " " + className : ""}`}
       style={style}
       borderWidth={borderWidth}
       {...props}
@@ -98,8 +88,6 @@ const RadarSpinner = ({
       {generateSpinners(4)}
     </Radar>
   );
-};
-
-RadarSpinner.propTypes = propTypes;
+}
 
 export default RadarSpinner;

@@ -1,10 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import type { EpicSpinnerProps } from "../types";
+import styled from "styled-components";
 
-const BreedingSpinner = styled.div`
-  height: ${(props) => props.size}px;
-  width: ${(props) => props.size}px;
+const BreedingSpinner = styled.div<EpicSpinnerProps & { delayModifier: number }>`
+  height: ${(props) => props.size!}px;
+  width: ${(props) => props.size!}px;
   position: relative;
   transform: rotate(45deg);
 
@@ -13,12 +12,12 @@ const BreedingSpinner = styled.div`
   }
 
   .rhombus {
-    height: calc(${(props) => props.size}px / 7.5);
-    width: calc(${(props) => props.size}px / 7.5);
-    animation-duration: ${(props) => props.animationDuration}ms;
-    top: calc(${(props) => props.size}px / 2.3077);
-    left: calc(${(props) => props.size}px / 2.3077);
-    background-color: ${(props) => props.color};
+    height: calc(${(props) => props.size!}px / 7.5);
+    width: calc(${(props) => props.size!}px / 7.5);
+    animation-duration: ${(props) => props.animationDuration!}ms;
+    top: calc(${(props) => props.size!}px / 2.3077);
+    left: calc(${(props) => props.size!}px / 2.3077);
+    background-color: ${(props) => props.color!};
     position: absolute;
     animation-iteration-count: infinite;
   }
@@ -68,14 +67,14 @@ const BreedingSpinner = styled.div`
   }
 
   .rhombus.big {
-    height: calc(${(props) => props.size}px / 3);
-    width: calc(${(props) => props.size}px / 3);
-    animation-duration: ${(props) => props.animationDuration}ms;
-    top: calc(${(props) => props.size}px / 3);
-    left: calc(${(props) => props.size}px / 3);
-    background-color: ${(props) => props.color};
-    animation: breeding-rhombus-spinner-animation-child-big
-      ${(props) => props.animationDuration} infinite;
+    height: calc(${(props) => props.size!}px / 3);
+    width: calc(${(props) => props.size!}px / 3);
+    animation-duration: ${(props) => props.animationDuration!}ms;
+    top: calc(${(props) => props.size!}px / 3);
+    left: calc(${(props) => props.size!}px / 3);
+    background-color: ${(props) => props.color!};
+    animation: breeding-rhombus-spinner-animation-child-big ${(props) => props.animationDuration!}
+      infinite;
     animation-delay: 0.5s;
   }
 
@@ -126,42 +125,34 @@ const BreedingSpinner = styled.div`
   }
 `;
 
-const propTypes = {
-  size: PropTypes.number,
-  animationDuration: PropTypes.number,
-  color: PropTypes.string,
-  className: PropTypes.string,
-  style: PropTypes.object,
-};
-
-function generateRhombusChildren(num) {
+function generateRhombusChildren(num: number) {
   return Array.from({ length: num }).map((val, index) => (
     <div key={index} className={`rhombus child-${index + 1}`} />
   ));
 }
 
-const BreedingRhombusSpinner = ({
+function BreedingRhombusSpinner({
   size = 150,
-  color = '#fff',
+  color = "#fff",
   animationDuration = 2000,
-  className = '',
+  className = "",
   style,
   ...props
-}) => (
-  <BreedingSpinner
-    size={size}
-    color={color}
-    animationDuration={animationDuration}
-    className={`breeding-rhombus-spinner${className ? ' ' + className : ''}`}
-    style={style}
-    delayModifier={animationDuration * 0.05}
-    {...props}
-  >
-    {generateRhombusChildren(8)}
-    <div className="rhombus big" />
-  </BreedingSpinner>
-);
-
-BreedingRhombusSpinner.propTypes = propTypes;
+}: EpicSpinnerProps) {
+  return (
+    <BreedingSpinner
+      size={size}
+      color={color}
+      animationDuration={animationDuration}
+      className={`breeding-rhombus-spinner${className ? " " + className : ""}`}
+      style={style}
+      delayModifier={animationDuration * 0.05}
+      {...props}
+    >
+      {generateRhombusChildren(8)}
+      <div className="rhombus big" />
+    </BreedingSpinner>
+  );
+}
 
 export default BreedingRhombusSpinner;

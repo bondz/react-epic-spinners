@@ -1,16 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import type { EpicSpinnerProps } from "../types";
+import styled from "styled-components";
 
-const ScalingSquares = styled.div`
-  height: ${(props) => props.size}px;
-  width: ${(props) => props.size}px;
+const ScalingSquares = styled.div<EpicSpinnerProps>`
+  height: ${(props) => props.size!}px;
+  width: ${(props) => props.size!}px;
   position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  animation: scaling-squares-animation ${(props) => props.animationDuration}ms;
+  animation: scaling-squares-animation ${(props) => props.animationDuration!}ms;
   animation-iteration-count: infinite;
   transform: rotate(0deg);
 
@@ -19,14 +18,13 @@ const ScalingSquares = styled.div`
   }
 
   .square {
-    height: calc(${(props) => props.size}px * 0.25 / 1.3);
-    width: calc(${(props) => props.size}px * 0.25 / 1.3);
+    height: calc(${(props) => props.size!}px * 0.25 / 1.3);
+    width: calc(${(props) => props.size!}px * 0.25 / 1.3);
     margin-right: auto;
     margin-left: auto;
-    border: calc(${(props) => props.size}px * 0.04 / 1.3) solid
-      ${(props) => props.color};
+    border: calc(${(props) => props.size!}px * 0.04 / 1.3) solid ${(props) => props.color!};
     position: absolute;
-    animation-duration: ${(props) => props.animationDuration}ms;
+    animation-duration: ${(props) => props.animationDuration!}ms;
     animation-iteration-count: infinite;
   }
   .square:nth-child(1) {
@@ -71,40 +69,30 @@ const ScalingSquares = styled.div`
   }
 `;
 
-const propTypes = {
-  size: PropTypes.number,
-  animationDuration: PropTypes.number,
-  color: PropTypes.string,
-  className: PropTypes.string,
-  style: PropTypes.object,
-};
-
-function generateSpinners(num) {
-  return Array.from({ length: num }).map((val, index) => (
-    <div key={index} className="square" />
-  ));
+function generateSpinners(num: number) {
+  return Array.from({ length: num }).map((val, index) => <div key={index} className="square" />);
 }
 
-const ScalingSquaresSpinner = ({
+function ScalingSquaresSpinner({
   size = 65,
-  color = '#fff',
+  color = "#fff",
   animationDuration = 1250,
-  className = '',
+  className = "",
   style,
   ...props
-}) => (
-  <ScalingSquares
-    size={size}
-    color={color}
-    animationDuration={animationDuration}
-    className={`scaling-squares-spinner${className ? ' ' + className : ''}`}
-    style={style}
-    {...props}
-  >
-    {generateSpinners(4)}
-  </ScalingSquares>
-);
-
-ScalingSquaresSpinner.propTypes = propTypes;
+}: EpicSpinnerProps) {
+  return (
+    <ScalingSquares
+      size={size}
+      color={color}
+      animationDuration={animationDuration}
+      className={`scaling-squares-spinner${className ? " " + className : ""}`}
+      style={style}
+      {...props}
+    >
+      {generateSpinners(4)}
+    </ScalingSquares>
+  );
+}
 
 export default ScalingSquaresSpinner;

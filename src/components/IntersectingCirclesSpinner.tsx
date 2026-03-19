@@ -1,10 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import type { EpicSpinnerProps } from "../types";
+import styled from "styled-components";
 
-const IntersectingCircles = styled.div`
-  height: ${(props) => props.size}px;
-  width: ${(props) => props.size}px;
+const IntersectingCircles = styled.div<EpicSpinnerProps & { circleSize: number }>`
+  height: ${(props) => props.size!}px;
+  width: ${(props) => props.size!}px;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -16,8 +15,8 @@ const IntersectingCircles = styled.div`
   }
 
   .spinnerBlock {
-    animation: intersecting-circles-spinners-animation
-      ${(props) => props.animationDuration}ms linear infinite;
+    animation: intersecting-circles-spinners-animation ${(props) => props.animationDuration!}ms
+      linear infinite;
     transform-origin: center;
     display: block;
     height: ${(props) => props.circleSize}px;
@@ -25,7 +24,7 @@ const IntersectingCircles = styled.div`
   }
   .circle {
     display: block;
-    border: 2px solid ${(props) => props.color};
+    border: 2px solid ${(props) => props.color!};
     border-radius: 50%;
     height: 100%;
     width: 100%;
@@ -71,28 +70,18 @@ const IntersectingCircles = styled.div`
   }
 `;
 
-const propTypes = {
-  size: PropTypes.number,
-  animationDuration: PropTypes.number,
-  color: PropTypes.string,
-  className: PropTypes.string,
-  style: PropTypes.object,
-};
-
-function generateCircles(num) {
-  return Array.from({ length: num }).map((val, index) => (
-    <span key={index} className="circle" />
-  ));
+function generateCircles(num: number) {
+  return Array.from({ length: num }).map((val, index) => <span key={index} className="circle" />);
 }
 
-const IntersectingCirclesSpinner = ({
+function IntersectingCirclesSpinner({
   size = 70,
-  color = '#fff',
+  color = "#fff",
   animationDuration = 1200,
-  className = '',
+  className = "",
   style,
   ...props
-}) => {
+}: EpicSpinnerProps) {
   const circleSize = size / 2;
 
   return (
@@ -100,9 +89,7 @@ const IntersectingCirclesSpinner = ({
       size={size}
       color={color}
       animationDuration={animationDuration}
-      className={`intersecting-circles-spinner${
-        className ? ' ' + className : ''
-      }`}
+      className={`intersecting-circles-spinner${className ? " " + className : ""}`}
       style={style}
       circleSize={circleSize}
       {...props}
@@ -110,8 +97,6 @@ const IntersectingCirclesSpinner = ({
       <div className="spinnerBlock">{generateCircles(7)}</div>
     </IntersectingCircles>
   );
-};
-
-IntersectingCirclesSpinner.propTypes = propTypes;
+}
 
 export default IntersectingCirclesSpinner;

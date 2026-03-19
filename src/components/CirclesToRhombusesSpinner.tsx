@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import type { EpicSpinnerProps } from "../types";
+import styled from "styled-components";
 
-const CircleRhombus = styled.div`
+const CircleRhombus = styled.div<
+  EpicSpinnerProps & { circleMarginLeft: number; circleNum: number; delay: number }
+>`
   height: ${(props) => props.size}px;
-  width: ${(props) =>
-    (props.size + props.circleMarginLeft) * props.circleNum}px;
+  width: ${(props) => (props.size! + props.circleMarginLeft) * props.circleNum}px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,8 +23,8 @@ const CircleRhombus = styled.div`
     border: 3px solid ${(props) => props.color};
     overflow: hidden;
     background: transparent;
-    animation: circles-to-rhombuses-animation
-      ${(props) => props.animationDuration}ms linear infinite;
+    animation: circles-to-rhombuses-animation ${(props) => props.animationDuration}ms linear
+      infinite;
   }
   .circle:nth-child(1) {
     animation-delay: calc(${(props) => props.delay}ms * 1);
@@ -55,28 +55,18 @@ const CircleRhombus = styled.div`
   }
 `;
 
-const propTypes = {
-  size: PropTypes.number,
-  animationDuration: PropTypes.number,
-  color: PropTypes.string,
-  className: PropTypes.string,
-  style: PropTypes.object,
-};
-
-function generateRhombusChildren(num) {
-  return Array.from({ length: num }).map((val, index) => (
-    <div key={index} className="circle" />
-  ));
+function generateRhombusChildren(num: number) {
+  return Array.from({ length: num }).map((val, index) => <div key={index} className="circle" />);
 }
 
-const CirclesToRhombusesSpinner = ({
+function CirclesToRhombusesSpinner({
   size = 15,
-  color = '#fff',
+  color = "#fff",
   animationDuration = 1200,
-  className = '',
+  className = "",
   style,
   ...props
-}) => {
+}: EpicSpinnerProps) {
   const circleMarginLeft = size * 1.125;
   const circleNum = 3;
   const delay = 150;
@@ -86,9 +76,7 @@ const CirclesToRhombusesSpinner = ({
       size={size}
       color={color}
       animationDuration={animationDuration}
-      className={`circles-to-rhombuses-spinner${
-        className ? ' ' + className : ''
-      }`}
+      className={`circles-to-rhombuses-spinner${className ? " " + className : ""}`}
       style={style}
       circleMarginLeft={circleMarginLeft}
       delay={delay}
@@ -98,8 +86,6 @@ const CirclesToRhombusesSpinner = ({
       {generateRhombusChildren(circleNum)}
     </CircleRhombus>
   );
-};
-
-CirclesToRhombusesSpinner.propTypes = propTypes;
+}
 
 export default CirclesToRhombusesSpinner;
