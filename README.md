@@ -16,6 +16,7 @@ This library is the React implementation of Vue [epic-spinners](http://epic-spin
 
 [Epic Spinners with Bit](https://bitsrc.io/bondz/react-epic-spinners) - Disocver, play and install spinners.
 ![scope preview](https://storage.googleapis.com/bit-assets/epic_spinners.png)
+
 ## Installation
 
 Using NPM
@@ -38,11 +39,11 @@ An online demo is available [here](https://bondz.github.io/react-epic-spinners/)
 
 All components accept the following props
 
-* `size` `[number]`: (optional) specifies how large the spinner should be rendered
-* `color` `[string]`: (optional) defaults to `#fff`. Specifies the color of the spinner.
-* `animationDelay` `[number]`: (optional) specifies the timing of the spinner animation. Lower numbers mean the animations restart faster.
-* `className` `[string]`: (optional) add any additional class you want to the component
-* `style` `[object]`: (optional) a react component style object to additionally style the component
+- `size` `[number]`: (optional) specifies how large the spinner should be rendered
+- `color` `[string]`: (optional) defaults to `#fff`. Specifies the color of the spinner.
+- `animationDelay` `[number]`: (optional) specifies the timing of the spinner animation. Lower numbers mean the animations restart faster.
+- `className` `[string]`: (optional) add any additional class you want to the component
+- `style` `[object]`: (optional) a react component style object to additionally style the component
 
 ### Examples
 
@@ -61,34 +62,34 @@ import { AtomSpinner } from 'react-epic-spinners'
 import { ... } from 'react-epic-spinners'
 ```
 
-* [AtomSpinner](/src/components/AtomSpinner.js)
-* [BreedingRhombusSpinner](/src/components/BreedingRhombusSpinner.js)
-* [CirclesToRhombusesSpinner](/src/components/CirclesToRhombusesSpinner.js)
-* [FingerprintSpinner](/src/components/FingerprintSpinner.js)
-* [FlowerSpinner](/src/components/FlowerSpinner.js)
-* [FulfillingBouncingCircleSpinner](/src/components/FulfillingBouncingCircleSpinner.js)
-* [FulfillingSquareSpinner](/src/components/FulfillingSquareSpinner.js)
-* [HalfCircleSpinner](/src/components/HalfCircleSpinner.js)
-* [HollowDotsSpinner](/src/components/HollowDotsSpinner.js)
-* [IntersectingCirclesSpinner](/src/components/IntersectingCirclesSpinner.js)
-* [LoopingRhombusesSpinner](/src/components/LoopingRhombusesSpinner.js)
-* [OrbitSpinner](/src/components/OrbitSpinner.js)
-* [PixelSpinner](/src/components/PixelSpinner.js)
-* [RadarSpinner](/src/components/RadarSpinner.js)
-* [ScalingSquaresSpinner](/src/components/ScalingSquaresSpinner.js)
-* [SelfBuildingSquareSpinner](/src/components/SelfBuildingSquareSpinner.js)
-* [SemipolarSpinner](/src/components/SemipolarSpinner.js)
-* [SpringSpinner](/src/components/SpringSpinner.js)
-* [SwappingSquaresSpinner](/src/components/SwappingSquaresSpinner.js)
-* [TrinityRingsSpinner](/src/components/TrinityRingsSpinner.js)
+- [AtomSpinner](/src/components/AtomSpinner.js)
+- [BreedingRhombusSpinner](/src/components/BreedingRhombusSpinner.js)
+- [CirclesToRhombusesSpinner](/src/components/CirclesToRhombusesSpinner.js)
+- [FingerprintSpinner](/src/components/FingerprintSpinner.js)
+- [FlowerSpinner](/src/components/FlowerSpinner.js)
+- [FulfillingBouncingCircleSpinner](/src/components/FulfillingBouncingCircleSpinner.js)
+- [FulfillingSquareSpinner](/src/components/FulfillingSquareSpinner.js)
+- [HalfCircleSpinner](/src/components/HalfCircleSpinner.js)
+- [HollowDotsSpinner](/src/components/HollowDotsSpinner.js)
+- [IntersectingCirclesSpinner](/src/components/IntersectingCirclesSpinner.js)
+- [LoopingRhombusesSpinner](/src/components/LoopingRhombusesSpinner.js)
+- [OrbitSpinner](/src/components/OrbitSpinner.js)
+- [PixelSpinner](/src/components/PixelSpinner.js)
+- [RadarSpinner](/src/components/RadarSpinner.js)
+- [ScalingSquaresSpinner](/src/components/ScalingSquaresSpinner.js)
+- [SelfBuildingSquareSpinner](/src/components/SelfBuildingSquareSpinner.js)
+- [SemipolarSpinner](/src/components/SemipolarSpinner.js)
+- [SpringSpinner](/src/components/SpringSpinner.js)
+- [SwappingSquaresSpinner](/src/components/SwappingSquaresSpinner.js)
+- [TrinityRingsSpinner](/src/components/TrinityRingsSpinner.js)
 
 ### Known Issues
 
 Because of some bugs with `flexbox` on Firefox, the following components may not render properly
 
-* ScalingSquaresSpinner
-* SwappingSquaresSpinner
-* TrinityRingsSpinner
+- ScalingSquaresSpinner
+- SwappingSquaresSpinner
+- TrinityRingsSpinner
 
 If you know a fix for it, please send a PR :)
 

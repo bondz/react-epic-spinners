@@ -1,8 +1,0 @@
-{
-  "compilerOptions": {
-    "jsx": "react",
-    "checkJs": true,
-    "lib": ["es2017", "dom"]
-  },
-  "include": ["src/**/*.js"]
-}
